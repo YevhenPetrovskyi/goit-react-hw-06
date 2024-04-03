@@ -4,11 +4,11 @@ import initialContacts from '../data/initialContacts.json';
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: initialContacts,
+  initialState: { items: initialContacts },
   reducers: {
     addContact: {
       reducer(state, action) {
-        state.push(action.payload);
+        state.items.push(action.payload);
       },
       prepare(name, number) {
         return {
@@ -21,8 +21,10 @@ const contactsSlice = createSlice({
       },
     },
     deleteContact(state, action) {
-      const index = state.findIndex((contact) => contact.id === action.payload);
-      state.splice(index, 1);
+      const index = state.items.findIndex(
+        (contact) => contact.id === action.payload
+      );
+      state.items.splice(index, 1);
     },
   },
 });
