@@ -16,7 +16,6 @@ import {
 const persistConfig = {
   key: 'contacts',
   storage,
-  whitelist: ['contacts'],
 };
 
 export const store = configureStore({
